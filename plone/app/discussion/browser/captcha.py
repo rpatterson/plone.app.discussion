@@ -3,8 +3,8 @@
 from persistent import Persistent
 from plone.app.discussion.browser.comments import CommentForm
 from plone.app.discussion.comment import Comment
-from plone.app.discussion.interfaces import ICaptcha
-from plone.app.discussion.interfaces import IDiscussionSettings
+from plone.app.z3cform.captcha import ICaptcha
+from Products.CMFPlone.interfaces.controlpanel import ISecuritySchema
 from plone.registry.interfaces import IRegistry
 from plone.z3cform.fieldsets import extensible
 from Products.CMFCore.utils import getToolByName
@@ -43,7 +43,7 @@ class CaptchaExtender(extensible.FormExtender):
         self.form = form
 
         registry = queryUtility(IRegistry)
-        settings = registry.forInterface(IDiscussionSettings, check=False)
+        settings = registry.forInterface(ISecuritySchema, check=False, prefix='plone')
         self.captcha = settings.captcha
         portal_membership = getToolByName(self.context, 'portal_membership')
         self.isAnon = portal_membership.isAnonymousUser()

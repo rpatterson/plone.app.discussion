@@ -280,22 +280,6 @@ class IDiscussionSettings(Interface):
         vocabulary='plone.app.discussion.vocabularies.TextTransformVocabulary',
     )
 
-    captcha = schema.Choice(
-        title=_(u"label_captcha",
-                default="Captcha"),
-        description=_(
-            u"help_captcha",
-            default=u"Use this setting to enable or disable Captcha "
-                    u"validation for comments. Install "
-                    u"plone.formwidget.captcha, "
-                    u"plone.formwidget.recaptcha, collective.akismet, or "
-                    u"collective.z3cform.norobots if there are no options "
-                    u"available."),
-        required=True,
-        default='disabled',
-        vocabulary='plone.app.discussion.vocabularies.CaptchaVocabulary',
-    )
-
     show_commenter_image = schema.Bool(
         title=_(u"label_show_commenter_image",
                 default=u"Show commenter image"),

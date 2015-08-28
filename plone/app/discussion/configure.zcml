@@ -104,11 +104,6 @@
     <adapter factory=".conversation.ConversationReplies" />
     <adapter factory=".conversation.CommentReplies" />
 
-    <!-- Captcha Vocabulary -->
-    <utility component=".vocabularies.captcha_vocabulary"
-             name="plone.app.discussion.vocabularies.CaptchaVocabulary"
-             provides="zope.schema.interfaces.IVocabularyFactory" />
-
     <!-- Text Transform Vocabulary -->
     <utility component=".vocabularies.text_transform_vocabulary"
              name="plone.app.discussion.vocabularies.TextTransformVocabulary"
