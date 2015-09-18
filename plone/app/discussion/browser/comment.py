@@ -35,7 +35,7 @@ class View(BrowserView):
 
         registry = getUtility(IRegistry)
         view_action_types = registry.get(
-            'plone.types_view_action_in_listings', [])
+            'plone.types_use_view_action_in_listings', [])
 
         obj = aq_parent(aq_parent(context))
         url = obj.absolute_url()
