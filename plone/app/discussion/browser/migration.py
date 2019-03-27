@@ -104,18 +104,13 @@ class View(BrowserView):
 
                     member = mt.getMemberById(comment.author_username)
                     if member:
-                        comment.author_name = member.fullname
-
-                    if not comment.author_name:
                         # In migrated site member.fullname = ''
                         # while member.getProperty('fullname') has the
                         # correct value
-                        if member:
-                            comment.author_name = member.getProperty(
-                                'fullname'
-                            )
-                        else:
-                            comment.author_name = comment.author_username
+                        comment.author_name = member.getProperty('fullname')
+
+                    if not comment.author_name:
+                        comment.author_name = comment.author_username
 
                     try:
                         comment.author_email = reply.email
