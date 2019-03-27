@@ -1,4 +1,5 @@
 from datetime import datetime
+import logging
 
 from Acquisition import aq_inner, aq_parent
 
@@ -16,6 +17,8 @@ from plone.app.discussion.interfaces import IConversation, IReplies, IComment
 
 from types import TupleType
 from DateTime import DateTime
+
+logger = logging.getLogger(__name__)
 
 
 def DT2dt(DT):
@@ -56,7 +59,7 @@ class View(BrowserView):
             # encode string before sending it to external world
             if isinstance(msg, unicode):
                 msg = msg.encode('utf-8')  # pragma: no cover
-            context.plone_log(msg)
+            logger.info(msg)
             out.append(msg)
 
         def migrate_replies(context, in_reply_to, replies,
